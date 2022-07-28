@@ -3,7 +3,7 @@ const FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png', 'svg'];
 const plusButton = document.querySelector('.scale__control--bigger');
 const minusButton = document.querySelector('.scale__control--smaller');
 const scaleResult = document.querySelector('.scale__control--value');
-const imgPreview = document.querySelector('.img-upload__preview img');
+const picPreview = document.querySelector('.img-upload__preview img');
 const fileChooser = document.querySelector('.img-upload__input');
 const effectPreviewPics = document.querySelectorAll('.effects__preview');
 
@@ -16,7 +16,7 @@ fileChooser.addEventListener('change', () => {
   const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
   if (matches) {
     const previewPicURL = URL.createObjectURL(file);
-    imgPreview.src = previewPicURL;
+    picPreview.src = previewPicURL;
     effectPreviewPics.forEach((e) => {
       e.style.backgroundImage = `url(${previewPicURL})`;
     });
@@ -29,7 +29,7 @@ const scaleAdjust = function () {
       procentNumber += 25;
       scaleResult.value = `${procentNumber}%`;
       const picScale = `scale(${procentNumber / 100})`;
-      imgPreview.style.transform = picScale;
+      picPreview.style.transform = picScale;
     }
   });
 
@@ -39,7 +39,7 @@ const scaleAdjust = function () {
       scaleResult.value = `${procentNumber}%`;
 
       const picScale = `scale(${procentNumber / 100})`;
-      imgPreview.style.transform = picScale;
+      picPreview.style.transform = picScale;
     }
   });
 };

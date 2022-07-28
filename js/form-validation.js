@@ -5,6 +5,7 @@ const form = document.querySelector('#upload-select-image');
 const hashtagField = form.querySelector('.text__hashtags');
 const re = /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/;
 const re2 = /^$/;
+const MAX_HASHTAG_AMOUNT = 5;
 
 const pristine = new Pristine(form, {
   classTo: 'img-upload__field-wrapper',
@@ -28,10 +29,7 @@ pristine.addValidator(hashtagField, (value) => {
 
 pristine.addValidator(hashtagField, (value) => {
   const arrayOfHashtags = value.split(' ');
-  if (arrayOfHashtags.length <= 5) {
-    return true;
-  }
-  return false;
+  return arrayOfHashtags.length <= MAX_HASHTAG_AMOUNT;
 }, 'Не более пяти хештегов');
 
 const setUploadFormSubmit = (onSuccess) => {

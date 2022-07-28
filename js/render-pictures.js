@@ -1,5 +1,5 @@
 import { openBigPicture } from './big-picture.js';
-import {debounce} from './util.js';
+
 
 //Находим секцию, куда будем вставлять фото пользователей
 const userPhotoList = document.querySelector('.pictures');
@@ -48,7 +48,6 @@ const randomPhotosRender = (similarPhotos) => {
 };
 
 const disscussedPhotosRender = (similarPhotos) => {
-  debounce();
   filterDiscussedButton.addEventListener('click', (evt) => {
     filterButtons.forEach((e) => e.classList.remove('img-filters__button--active'));
     evt.target.classList.add('img-filters__button--active');
@@ -56,7 +55,7 @@ const disscussedPhotosRender = (similarPhotos) => {
 
     similarPhotos
       .slice()
-      .sort((photoA, photoB) => photoA.likes > photoB.likes ? -1 : 1)
+      .sort((photoA, photoB) => photoA.comments.length > photoB.comments.length ? -1 : 1)
       .forEach(similarPhotoCreate);
   });
 };

@@ -11,7 +11,7 @@ const uploadErrorSet = () => {
   const errorCloseButton = document.querySelector('.error__button');
 
   errorMessage.classList.remove('hidden');
-  errorMessage.style.zIndex = 5;
+  errorMessage.style.zIndex = '5';
 
   const onErrorMessageEscButtonKeydown = (evt) => {
     if (isEscapeKey(evt)) {

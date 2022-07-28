@@ -7,6 +7,7 @@ import {renderSimilarPhotos, disscussedPhotosRender, randomPhotosRender, default
 import {closeUploadForm} from './upload-form.js';
 import {setUploadFormSubmit} from './form-validation.js';
 import {debounce} from './util.js';
+import {showAlert} from './util.js';
 
 fetch ('https://26.javascript.pages.academy/kekstagram/data')
   .then((response) => response.json())
@@ -15,6 +16,9 @@ fetch ('https://26.javascript.pages.academy/kekstagram/data')
     debounce(disscussedPhotosRender(userPhotos), 500);
     debounce(randomPhotosRender(userPhotos), 500);
     debounce(defaultPhotosRender(userPhotos), 500);
+  })
+  .catch (() => {
+    showAlert('Ошибка загрузки данных с сервера');
   });
 
 setUploadFormSubmit(closeUploadForm);
